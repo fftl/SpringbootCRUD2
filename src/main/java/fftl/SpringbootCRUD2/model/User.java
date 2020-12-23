@@ -4,24 +4,30 @@ package fftl.SpringbootCRUD2.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table
+@Table(name="user")
 @Data
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String userid;
-    private String passwd;
-    private String username;
+    private String uid;
+    private String upw;
+    private String uname;
     private String email;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role",
                 joinColumns = @JoinColumn(name = "user_id"),
                 inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roels;
+    private Set<Role> roles;
+
+    @OneToMany(mappedBy = "user")
+    private List<Board> boards = new ArrayList<>();
 }
