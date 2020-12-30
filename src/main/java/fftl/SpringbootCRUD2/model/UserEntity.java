@@ -13,7 +13,8 @@ import java.util.Set;
 @Entity
 @Table(name="user")
 @Getter
-public class User {
+public class UserEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

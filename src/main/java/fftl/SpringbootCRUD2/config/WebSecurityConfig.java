@@ -22,7 +22,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final UserService userService;
+    private UserService userService;
 
     @Bean
     public PasswordEncoder passwordEncoder(){ //비밀번호를 암호화할 때 사용할 인코더를 미리 빈으로 등록해놓는 과정
@@ -38,33 +38,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","/join").permitAll()
+                .antMatchers("/","/home","/join").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
+                .defaultSuccessUrl("/hello")
                 .permitAll()
                 .and()
                 .logout()
                 .permitAll();
     }
 
-    @Bean
+
     @Override
-    public UserDetailsService userDetailsService() {
-        UserDetails user =
-                User.withDefaultPasswordEncoder()
-                        .username("user")
-                        .password("password")
-                        .roles("USER")
-                        .build();
-
-        return new InMemoryUserDetailsManager(user);
+    public void configure(AuthenticationManagerBuilder auth) throws Exception { // 10
+        auth.userDetailsService(userService).passwordEncoder(passwordEncoder()); // 해당 서비스(userService)에서는 UserDetailsService를 implements해서 loadUserByUsername() 구현해야함 (서비스 참고)
     }
-
-//    @Override
-//    public void configure(AuthenticationManagerBuilder auth) throws Exception { // 10
-//        auth.userDetailsService(userService).passwordEncoder(passwordEncoder()); // 해당 서비스(userService)에서는 UserDetailsService를 implements해서 loadUserByUsername() 구현해야함 (서비스 참고)
-//    }
 
 }

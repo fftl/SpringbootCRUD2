@@ -1,6 +1,6 @@
 package fftl.SpringbootCRUD2.controller;
 
-import fftl.SpringbootCRUD2.model.User;
+import fftl.SpringbootCRUD2.model.UserEntity;
 import fftl.SpringbootCRUD2.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -39,11 +39,11 @@ public class WebController {
     }
 
     @PostMapping("/join")
-    public String userJoin(User user){
+    public String userJoin(UserEntity userEntity){
 
-        userService.userJoin(user);
+        userService.userJoin(userEntity);
 
-        return "join";
+        return "/login";
     }
 
 }

@@ -1,7 +1,7 @@
 package fftl.SpringbootCRUD2.repository;
 
 import fftl.SpringbootCRUD2.model.Board;
-import fftl.SpringbootCRUD2.model.User;
+import fftl.SpringbootCRUD2.model.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -13,12 +13,16 @@ public class UserRepository {
 
     private final EntityManager em;
 
-    public void userSave(User user){
-        em.persist(user);
+    public void userSave(UserEntity userEntity){
+        em.persist(userEntity);
     }
 
     public void boardSave(Board board){
         em.persist(board);
+    }
+
+    public UserEntity findByName(String uname){
+        return em.find(UserEntity.class, uname);
     }
 
 
