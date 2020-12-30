@@ -6,6 +6,19 @@
   <title>join</title>
 </head>
 <body>
-
+<form th:action="@{/join}" method="post">
+  <div>
+    <input type="text" th:field="*{uid}" placeholder="아이디를 입력해주세요.">
+  </div>
+  <div>
+    <input type="text" th:field="*{upw}" placeholder="비밀번호를 입력해주세요.">
+  </div>
+  <div>
+    <input type="text" th:field="*{uname}" placeholder="이름을 입력해주세요.">
+  </div>
+  <div>
+    <input type="text" th:field="*{email}" placeholder="이메일을 입력해주세요.">
+  </div>
+</form>
 </body>
 </html>

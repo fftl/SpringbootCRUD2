@@ -2,6 +2,7 @@ package fftl.SpringbootCRUD2.model;
 
 
 import lombok.Data;
+import lombok.Getter;
 
 import javax.persistence.*;
 import javax.persistence.Table;
@@ -11,7 +12,7 @@ import java.util.Set;
 
 @Entity
 @Table(name="user")
-@Data
+@Getter
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
