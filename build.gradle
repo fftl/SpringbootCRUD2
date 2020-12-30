@@ -27,6 +27,9 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
+	//Error creating bean with name 'entityManagerFactory' defined in class path resource 에러 해결
+	compile('javax.xml.bind:jaxb-api:2.3.0')
+
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
