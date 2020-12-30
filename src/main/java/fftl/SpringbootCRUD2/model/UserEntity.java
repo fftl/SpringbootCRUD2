@@ -24,6 +24,6 @@ public class UserEntity {
     private String uname;
     private String email;
 
-    @OneToMany(mappedBy = "user_id")
+    @OneToMany(mappedBy = "userEntity")
     private List<Board> boards = new ArrayList<>();
 }
