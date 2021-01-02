@@ -1,15 +1,18 @@
 package fftl.SpringbootCRUD2.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 
 @Entity
-@Table(name="board")
-@Data
-public class Board {
+@Table(name="BoardEntity")
+@Getter
+@Setter
+public class BoardEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

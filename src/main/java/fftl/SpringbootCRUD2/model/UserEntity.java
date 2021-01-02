@@ -3,6 +3,7 @@ package fftl.SpringbootCRUD2.model;
 
 import lombok.Data;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.persistence.Table;
@@ -11,8 +12,9 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name="user")
+@Table(name="UserEntity")
 @Getter
+@Setter
 public class UserEntity {
 
     @Id
@@ -20,10 +22,13 @@ public class UserEntity {
     private Long id;
 
     private String uid;
+
     private String upw;
+
     private String uname;
+
     private String email;
 
     @OneToMany(mappedBy = "userEntity")
-    private List<Board> boards = new ArrayList<>();
+    private List<BoardEntity> boards = new ArrayList<>();
 }

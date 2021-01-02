@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -25,7 +26,8 @@ public class UserService implements UserDetailsService{
 
     @Transactional //유저 회원가입 입니다.
     public void userJoin(UserEntity userEntity){
-         userRepository.userSave(userEntity);
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        userRepository.userSave(userEntity);
     }
 
     @Override
@@ -34,6 +36,7 @@ public class UserService implements UserDetailsService{
 
         List<GrantedAuthority> authorities = new ArrayList<>(); //권한을 생성해줍니다.
 
+        authorities.add(new SimpleGrantedAuthority(Role.MEMBER.getValue()));
         if (("admin").equals(userEntity.getUname())) { //만약 회원가입된 유저의 이름이가 admin 이면 admin 권한을 준다.
             authorities.add(new SimpleGrantedAuthority(Role.ADMIN.getValue()));
         } else {    //아니라면 member 권한을 준다.

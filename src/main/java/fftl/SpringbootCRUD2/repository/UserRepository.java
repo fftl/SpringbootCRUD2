@@ -1,6 +1,6 @@
 package fftl.SpringbootCRUD2.repository;
 
-import fftl.SpringbootCRUD2.model.Board;
+import fftl.SpringbootCRUD2.model.BoardEntity;
 import fftl.SpringbootCRUD2.model.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -17,7 +17,7 @@ public class UserRepository {
         em.persist(userEntity);
     }
 
-    public void boardSave(Board board){
+    public void boardSave(BoardEntity board){
         em.persist(board);
     }
 
