@@ -1,6 +1,5 @@
 package fftl.SpringbootCRUD2.config;
 
-//import fftl.SpringbootCRUD2.model.BoardEntity;
 import fftl.SpringbootCRUD2.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -38,22 +37,34 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","/home","/join").permitAll()
+                .antMatchers("/", "/home","/join").permitAll()
+                .antMatchers("/board/**").hasAuthority("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/hello")
                 .permitAll()
                 .and()
                 .logout()
                 .permitAll();
     }
 
-    @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception { // 10
+//    @Bean
+//    @Override
+//    public UserDetailsService userDetailsService() {
+//        UserDetails user =
+//                User.withDefaultPasswordEncoder()
+//                        .username("user")
+//                        .password("password")
+//                        .roles("USER")
+//                        .build();
+//
+//        return new InMemoryUserDetailsManager(user);
+//    }
+
+//    @Override
+//    public void configure(AuthenticationManagerBuilder auth) throws Exception { // 10
 //        auth.userDetailsService(userService).passwordEncoder(passwordEncoder()); // 해당 서비스(userService)에서는 UserDetailsService를 implements해서 loadUserByUsername() 구현해야함 (서비스 참고)
-        auth.userDetailsService(userService); // 해당 서비스(userService)에서는 UserDetailsService를 implements해서 loadUserByUsername() 구현해야함 (서비스 참고)
-    }
+//    }
 
 }

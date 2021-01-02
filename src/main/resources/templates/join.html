@@ -1,23 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
+  <meta charset="UTF-8">
   <title>join</title>
 </head>
 <body>
-<form role="form" action="/join" method="post" th:object="${userForm}">
-  <div>
-    <input type="text" name="uid" id="uid" placeholder="아이디를 입력해주세요.">
-  </div>
-  <div>
-    <input type="text" name="upw" id="upw" placeholder="비밀번호를 입력해주세요.">
-  </div>
-  <div>
-    <input type="text" name="uname" id="uname" placeholder="이름을 입력해주세요.">
-  </div>
-  <div>
-    <input type="text" name="email" id="email" placeholder="이메일을 입력해주세요.">
-  </div>
-  <button type="submit">서브밋</button>
-</form>
+
 </body>
 </html>
