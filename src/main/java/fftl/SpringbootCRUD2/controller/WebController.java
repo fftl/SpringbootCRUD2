@@ -16,19 +16,4 @@ public class WebController {
         return "home";
     }
 
-    @GetMapping("/hello")
-    public String goHello(){
-        return "hello";
-    }
-
-    @GetMapping("/login")
-    public String goLogin(){
-        return "login";
-    }
-
-    @GetMapping("/join")
-    public String goJoin(){
-        return "join";
-    }
-
 }

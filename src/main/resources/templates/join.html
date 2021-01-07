@@ -6,6 +6,14 @@
   <title>join</title>
 </head>
 <body>
-
+<div>회원가입합니다!</div>
+<br>
+<form th:action="@{/join}" method="post">
+  <div><label> id : <input type="text" name="username"/> </label></div>
+  <div><label> Password : <input type="password" name="password"/> </label></div>
+  <div><label> nickname : <input type="text" name="nickname"/> </label></div>
+  <div><label> email : <input type="email" name="email"/> </label></div>
+  <button type="submit">가입완료</button>
+</form>
 </body>
 </html>

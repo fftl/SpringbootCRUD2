@@ -1,18 +1,14 @@
 package fftl.SpringbootCRUD2.model;
 
-import lombok.Data;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-
-@Entity
-@Table(name="BoardEntity")
 @Getter
-@Setter
-public class BoardEntity {
+@Entity
+public class Board {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,7 +16,7 @@ public class BoardEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private UserEntity userEntity;
+    private User user;
 
     private String title;
 
@@ -28,5 +24,12 @@ public class BoardEntity {
 
     private LocalDateTime regDate;
 
-
+    @Builder
+    public Board(Long id, User user, String title, String content, LocalDateTime regDate) {
+        this.id = id;
+        this.user = user;
+        this.title = title;
+        this.content = content;
+        this.regDate = regDate;
+    }
 }
