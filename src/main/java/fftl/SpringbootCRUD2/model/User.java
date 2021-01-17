@@ -18,18 +18,14 @@ public class User {
     private Long id;
 
     private String username;
-
     private String password;
-
     private String nickname;
-
     private String email;
 
     @OneToMany(mappedBy = "user")
     private List<Board> boards = new ArrayList<>();
 
     @Builder
-
     public User(Long id, String username, String password, String nickname, String email) {
         this.username = username;
         this.password = password;
