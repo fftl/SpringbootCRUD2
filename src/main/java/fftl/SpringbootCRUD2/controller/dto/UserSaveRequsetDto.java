@@ -1,6 +1,6 @@
 package fftl.SpringbootCRUD2.controller.dto;
 
-import fftl.SpringbootCRUD2.model.User;
+import fftl.SpringbootCRUD2.domain.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

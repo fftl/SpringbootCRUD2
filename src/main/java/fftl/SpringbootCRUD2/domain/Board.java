@@ -1,4 +1,4 @@
-package fftl.SpringbootCRUD2.model;
+package fftl.SpringbootCRUD2.domain;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -32,4 +32,6 @@ public class Board {
         this.content = content;
         this.regDate = regDate;
     }
+
+
 }

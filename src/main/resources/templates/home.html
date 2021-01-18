@@ -6,9 +6,15 @@
 </head>
 <body>
     <h1>안녕하세요! springbootCRUD2 입니다.</h1>
-    <div>
+    <div th:if="${session.userInfo == null}">
         <p><a href="/inJoin">회원가입</a>하세요!</p>
         <p><a href="/inLogin">로그인</a>하세요!</p>
     </div>
+    <!--로그인 했을 때는 아래가 보임, login session을 부여했음-->
+    <div th:if="${session.userInfo != null}">
+        <p><b>로그인 되었습니다!!</b></p>
+        <p><a href="/goBoard">게시판</a>들어가기</p>
+    </div>
+
 </body>
 </html>

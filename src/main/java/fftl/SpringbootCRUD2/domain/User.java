@@ -1,10 +1,10 @@
-package fftl.SpringbootCRUD2.model;
+package fftl.SpringbootCRUD2.domain;
 
 
 import lombok.*;
+import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
-import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +15,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="user_id")
     private Long id;
 
     private String username;

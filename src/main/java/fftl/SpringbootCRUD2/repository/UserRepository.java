@@ -1,24 +1,10 @@
 package fftl.SpringbootCRUD2.repository;
 
-import fftl.SpringbootCRUD2.model.User;
-import fftl.SpringbootCRUD2.controller.dto.UserSaveRequsetDto;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+import fftl.SpringbootCRUD2.domain.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.persistence.EntityManager;
+import java.util.Optional;
 
-@RequiredArgsConstructor
-@Repository
-public class UserRepository {
-
-    private final EntityManager em;
-
-    public void userSave(User user){
-            em.persist(user);
-    }
-
-    public User findOneUser(Long id){
-        return em.find(User.class, id);
-    }
+public interface UserRepository extends JpaRepository<User, Long>{
+    Optional<User> findByUsername(String username);
 }

@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <meta charset="UTF-8">
-    <title>Create</title>
+  <meta charset="UTF-8">
+  <title>join</title>
 </head>
 <body>
-
+<div><b>게시글을 작성</b>합니다!</div>
+<br>
+<form action="#" th:action="@{/createBoard}" th:object="${boardDto}" method="post">
+  <div><label> title : <input type="text" th:field="*{username}"/></label></div>
+  <div><label> nickname : <input type="text" th:field="*{nickname}"/></label></div>
+  <div><label> content : <textarea th:field="*{email}"/></label></div>
+  <button type="submit">작성완료</button>
+</form>
 </body>
 </html>
