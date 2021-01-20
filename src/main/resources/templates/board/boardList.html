@@ -8,16 +8,20 @@
 <h1>게시판 입니다.</h1>
 <div>
     <table border="" class="table table-board">
-    <tr>
-        <th>No</th>
-        <th>title </th>
-        <th>date</th>
-    </tr>
-    <tr th:each="board: ${boards}">
-        <td th:text="${board.id}">id</td>
-        <td th:text="${board.title}">title</td>
-        <td th:text="${board.regdate}">regdate</td>
-    </tr>
+        <tr>
+            <th>No</th>
+            <th>title</th>
+            <th>date</th>
+        </tr>
+<!--        <tr th:if="${boards != null}"th:each="board: ${boards}">-->
+<!--            <td th:text="${board.id}">id</td>-->
+<!--            <td th:text="${board.title}">title</td>-->
+<!--            <td th:text="${board.regdate}">regdate</td>-->
+<!--        </tr>-->
+<!--        <tr th:if="${boards == null}">-->
+<!--            <td>게시글이 존재하지 않습니다.</td>-->
+<!--        </tr>-->
+
     </table>
 </div>
 <p><a href="/goBoardCreate">게시글 생성</a></p>

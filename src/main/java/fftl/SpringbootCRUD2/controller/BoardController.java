@@ -1,10 +1,8 @@
 package fftl.SpringbootCRUD2.controller;
 
 import fftl.SpringbootCRUD2.controller.dto.BoardSaveRequestDto;
-import fftl.SpringbootCRUD2.controller.dto.UserLoginRequestDto;
 import fftl.SpringbootCRUD2.domain.Board;
 import fftl.SpringbootCRUD2.domain.User;
-import fftl.SpringbootCRUD2.repository.BoardRepository;
 import fftl.SpringbootCRUD2.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,10 +27,12 @@ public class BoardController {
 
     @GetMapping("/goBoard")
     public String goBoard(Model model){
-
         List<Board> boards = boardService.findAll();
-        model.addAllAttributes(boards);
 
+        if(boards == null){
+            return "/board/boardList";
+        }
+        model.addAttribute(boards);
         return "/board/boardList";
     }
 
