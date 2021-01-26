@@ -29,10 +29,6 @@ public class BoardController {
     public String goBoard(Model model){
         List<Board> boards = boardService.findAll();
 
-        if(boards == null){
-            return "/board/boardList";
-        }
-        model.addAttribute(boards);
         return "/board/boardList";
     }
 
