@@ -1,4 +1,4 @@
-package fftl.SpringbootCRUD2.controller.dto;
+package fftl.SpringbootCRUD2.dto;
 
 import fftl.SpringbootCRUD2.domain.Board;
 import fftl.SpringbootCRUD2.domain.User;
@@ -12,15 +12,15 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-public class BoardSaveRequestDto{
+public class BoardSaveRequestDto {
 
-        private Long id;
-        private User user;
-        private String nickname;
-        private String title;
-        private String content;
-        private LocalDateTime regDate;
+    private Long id;
+    private String nickname;
+    private String title;
+    private String content;
+    private LocalDateTime regDate;
 
+    @Builder
     public BoardSaveRequestDto(Long id, User user, String nickname, String title, String content, LocalDateTime regDate) {
         this.nickname = nickname;
         this.title = title;
@@ -28,16 +28,14 @@ public class BoardSaveRequestDto{
         this.regDate = regDate;
     }
 
-    @Builder
 
-
-        public Board toEntity(){
-            return Board.builder()
-                    .content(content)
-                    .title(title)
-                    .regDate(regDate)
-                    .build();
-        }
+    public Board toEntity() {
+        return Board.builder()
+                .content(content)
+                .title(title)
+                .regDate(regDate)
+                .build();
     }
+}
 
 

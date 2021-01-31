@@ -1,6 +1,6 @@
 package fftl.SpringbootCRUD2.service;
 
-import fftl.SpringbootCRUD2.controller.dto.BoardSaveRequestDto;
+import fftl.SpringbootCRUD2.dto.BoardSaveRequestDto;
 import fftl.SpringbootCRUD2.domain.Board;
 import fftl.SpringbootCRUD2.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class BoardService {
 
-    private BoardRepository boardRepository;
+    private final BoardRepository boardRepository;
 
     @Transactional
     public void boardSave(BoardSaveRequestDto boardDto){

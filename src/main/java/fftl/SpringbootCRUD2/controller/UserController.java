@@ -1,7 +1,7 @@
 package fftl.SpringbootCRUD2.controller;
 
-import fftl.SpringbootCRUD2.controller.dto.UserLoginRequestDto;
-import fftl.SpringbootCRUD2.controller.dto.UserSaveRequsetDto;
+import fftl.SpringbootCRUD2.dto.UserLoginRequestDto;
+import fftl.SpringbootCRUD2.dto.UserSaveRequsetDto;
 import fftl.SpringbootCRUD2.domain.User;
 import fftl.SpringbootCRUD2.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -45,12 +45,11 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String userLogin(@ModelAttribute("LoginDto") UserLoginRequestDto loginDto, HttpSession session, HttpServletRequest request){
+    public String userLogin(@ModelAttribute("LoginDto") UserLoginRequestDto loginDto, HttpServletRequest request){
         User user = userService.userLogin(loginDto.getUsername(), loginDto.getPassword());
-
-        if(user.getEmail() != ""){
-            session.setAttribute("userInfo", user);
-
+        if(user.getEmail() != null){
+            HttpSession session = request.getSession(true);
+            session.setAttribute("user", user);
             return "redirect:/";
         }
 

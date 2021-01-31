@@ -19,10 +19,10 @@
             <td th:text="${board.regdate}">regdate</td>
         </tr>
         <tr th:if="${boards == null}">
-            <td>게시글이 존재하지 않습니다.</td>
+            <td colspan="3">게시글이 존재하지 않습니다.</td>
         </tr>
     </table>
 </div>
-<p><a href="/goBoard">게시글 생성</a></p>
+<p><a href="/goBoardCreate">게시글 생성</a></p>
 </body>
 </html>

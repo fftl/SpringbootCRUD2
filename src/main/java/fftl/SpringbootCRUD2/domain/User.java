@@ -15,7 +15,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="user_id")
+    @Column(name="userId")
     private Long id;
 
     private String username;
@@ -23,7 +23,7 @@ public class User {
     private String nickname;
     private String email;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "userId")
     private List<Board> boards = new ArrayList<>();
 
     @Builder

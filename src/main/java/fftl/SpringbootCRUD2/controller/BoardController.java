@@ -1,11 +1,10 @@
 package fftl.SpringbootCRUD2.controller;
 
-import fftl.SpringbootCRUD2.controller.dto.BoardSaveRequestDto;
+import fftl.SpringbootCRUD2.dto.BoardSaveRequestDto;
 import fftl.SpringbootCRUD2.domain.Board;
 import fftl.SpringbootCRUD2.domain.User;
 import fftl.SpringbootCRUD2.service.BoardService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Slf4j
 @RequiredArgsConstructor
 @Controller
 public class BoardController {
@@ -33,21 +31,24 @@ public class BoardController {
     }
 
     @GetMapping("/goBoardCreate")
-    public String goBoard(Model model, HttpSession session){
-        User user = (User)session.getAttribute("userInfo");
-        BoardSaveRequestDto boardSaveRequestDto = new BoardSaveRequestDto();
+    public String goBoardCreate(Model model, HttpServletRequest request){
 
+        HttpSession session = request.getSession(true);
+        User user = (User)session.getAttribute("user");
+
+        BoardSaveRequestDto boardSaveRequestDto = new BoardSaveRequestDto();
         boardSaveRequestDto.setNickname(user.getNickname());
+
         model.addAttribute("boardDto", boardSaveRequestDto);
 
-        return "/board/boardList";
+        return "/board/boardCreate";
     }
 
     @PostMapping("/createBoard")
-    public String userLogin(@ModelAttribute("boardDto") BoardSaveRequestDto boardDto, HttpSession session, HttpServletRequest request){
+    public String createBoard(@ModelAttribute("boardDto") BoardSaveRequestDto boardDto){
         boardDto.setRegDate(today);
         boardService.boardSave(boardDto);
 
-        return "redirect:/goBoard";
+        return "redirect:/";
     }
 }

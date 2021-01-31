@@ -1,6 +1,6 @@
 package fftl.SpringbootCRUD2.service;
 
-import fftl.SpringbootCRUD2.controller.dto.UserSaveRequsetDto;
+import fftl.SpringbootCRUD2.dto.UserSaveRequsetDto;
 import fftl.SpringbootCRUD2.domain.User;
 import fftl.SpringbootCRUD2.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,10 +24,14 @@ public class UserService {
 
     public User userLogin(String username, String password){
         User user= userRepository.findByUsername(username).get();
-        if(user.getPassword() != password){
+        System.out.println(password);
+        System.out.println(user.getPassword());
+        if(!user.getPassword().equals(password)){
+            System.out.println("틀렸대");
             User NotFoundUser = new User();
             return NotFoundUser;
         }
+        System.out.println("맞았대");
         return user;
     }
 }

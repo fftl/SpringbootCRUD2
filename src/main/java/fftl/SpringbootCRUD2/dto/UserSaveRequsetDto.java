@@ -1,4 +1,4 @@
-package fftl.SpringbootCRUD2.controller.dto;
+package fftl.SpringbootCRUD2.dto;
 
 import fftl.SpringbootCRUD2.domain.User;
 import lombok.Builder;
