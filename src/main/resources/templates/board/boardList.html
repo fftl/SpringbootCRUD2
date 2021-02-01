@@ -13,10 +13,10 @@
             <th>title</th>
             <th>date</th>
         </tr>
-        <tr th:if="${boards != null}"th:each="board: ${boards}">
+        <tr th:if="${boards != null}" th:each="board:${boards}">
             <td th:text="${board.id}">id</td>
-            <td th:text="${board.title}">title</td>
-            <td th:text="${board.regdate}">regdate</td>
+            <td><a th:text="${board.title}" th:href="@{/goUpdate/{boardId} (boardId=${board.id})}">title</a></td>
+            <td th:text="${board.regDate}"></td>
         </tr>
         <tr th:if="${boards == null}">
             <td colspan="3">게시글이 존재하지 않습니다.</td>

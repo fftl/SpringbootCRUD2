@@ -3,15 +3,15 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
   <meta charset="UTF-8">
-  <title>join</title>
+  <title>게시글 생성</title>
 </head>
 <body>
 <div><b>게시글을 작성</b>합니다!</div>
 <br>
 <form action="#" th:action="@{/createBoard}" th:object="${boardDto}" method="post">
-  <div><label> title : <input type="text" th:field="*{title}"/></label></div>
-  <div><label> nickname : <p th:text="${boardDto.nickname}"></p></label></div>
-  <div><label> content : <textarea th:field="*{content}"/></label></div>
+  <div><label> title : <input type="text" th:field="${title}"/></label></div>
+  <div><label> nickname : <span th:text="${boardDto.nickname}"></span></label></div>
+  <div><label> content : <textarea th:field="${content}"/></label></div>
   <button type="submit">작성완료</button>
 </form>
 </body>
