@@ -11,24 +11,24 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserSaveRequsetDto {
 
-        private String username;
+        private String userName;
         private String password;
-        private String nickname;
+        private String nickName;
         private String email;
 
         @Builder
-        public UserSaveRequsetDto(String username, String password, String nickname, String email) {
-            this.username = username;
+        public UserSaveRequsetDto(String userName, String password, String nickName, String email) {
+            this.userName = userName;
             this.password = password;
-            this.nickname = nickname;
+            this.nickName = nickName;
             this.email = email;
         }
 
         public User toEntity(){
             return User.builder()
-                    .username(username)
+                    .userName(userName)
                     .password(password)
-                    .nickname(nickname)
+                    .nickName(nickName)
                     .email(email)
                     .build();
         }

@@ -25,7 +25,7 @@ public class BoardController {
     LocalDateTime today = LocalDateTime.now();
 
     @GetMapping("/goBoard")
-    public String goBoard(Model model){
+    public String goBoard(Model model) {
         List<Board> boards = boardService.findAll();
 
         model.addAttribute("boards", boards);
@@ -34,13 +34,12 @@ public class BoardController {
     }
 
     @GetMapping("/goBoardCreate")
-    public String goBoardCreate(Model model, HttpServletRequest request){
+    public String goBoardCreate(Model model, HttpServletRequest request) {
 
         HttpSession session = request.getSession(true);
-        User user = (User)session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
 
         BoardSaveRequestDto boardSaveRequestDto = new BoardSaveRequestDto();
-        boardSaveRequestDto.setNickname(user.getNickname());
 
         model.addAttribute("boardDto", boardSaveRequestDto);
 
@@ -48,7 +47,7 @@ public class BoardController {
     }
 
     @PostMapping("/createBoard")
-    public String createBoard(@ModelAttribute("boardDto") BoardSaveRequestDto boardDto){
+    public String createBoard(@ModelAttribute("boardDto") BoardSaveRequestDto boardDto) {
         boardDto.setRegDate(today);
         boardService.boardSave(boardDto);
 
@@ -56,9 +55,9 @@ public class BoardController {
     }
 
     @GetMapping("/goUpdate/{boardId}")
-    public String goUpdate(@PathVariable Long boardId, Model model){
+    public String goUpdate(@PathVariable Long boardId, Model model) {
 
-        model.addAttribute("board", boardService.getBoard(boardId));
+        model.addAttribute("boardDto", boardService.getBoard(boardId));
 
         return "/board/boardUpdate";
     }

@@ -16,21 +16,21 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="userId")
-    private Long id;
+    private Long userId;
 
-    private String username;
+    private String userName;
     private String password;
-    private String nickname;
+    private String nickName;
     private String email;
 
     @OneToMany(mappedBy = "userId")
     private List<Board> boards = new ArrayList<>();
 
     @Builder
-    public User(Long id, String username, String password, String nickname, String email) {
-        this.username = username;
+    public User(String userName, String password, String nickName, String email) {
+        this.userName = userName;
         this.password = password;
-        this.nickname = nickname;
+        this.nickName = nickName;
         this.email = email;
     }
 }

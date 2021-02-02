@@ -14,24 +14,26 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class BoardSaveRequestDto {
 
-    private Long id;
-    private String nickname;
+    private Long userId;
+    private String nickName;
     private String title;
     private String content;
     private LocalDateTime regDate;
 
     @Builder
-    public BoardSaveRequestDto(Long id, User user, String nickname, String title, String content, LocalDateTime regDate) {
-        this.nickname = nickname;
+    public BoardSaveRequestDto(Long userId, String nickName, String title, String content, LocalDateTime regDate) {
+        this.userId = userId;
+        this.nickName = nickName;
         this.title = title;
         this.content = content;
         this.regDate = regDate;
     }
 
-
     public Board toEntity() {
         return Board.builder()
+                .userId(userId)
                 .content(content)
+                .nickName(nickName)
                 .title(title)
                 .regDate(regDate)
                 .build();

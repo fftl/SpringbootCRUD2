@@ -21,19 +21,17 @@ public class Board {
     private Long userId;
 
     private String title;
-
+    private String nickName;
     private String content;
 
     private LocalDateTime regDate;
 
     @Builder
-    public Board(Long id, Long userId, String title, String content, LocalDateTime regDate) {
-        this.id = id;
+    public Board(Long userId, String title, String nickName, String content, LocalDateTime regDate) {
         this.userId = userId;
         this.title = title;
+        this.nickName = nickName;
         this.content = content;
         this.regDate = regDate;
     }
-
-
 }

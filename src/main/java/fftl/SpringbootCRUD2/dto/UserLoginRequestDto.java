@@ -10,12 +10,12 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserLoginRequestDto {
 
-    private String username;
+    private String userName;
     private String password;
 
     @Builder
-    public UserLoginRequestDto(String username, String password) {
-        this.username = username;
+    public UserLoginRequestDto(String userName, String password) {
+        this.userName = userName;
         this.password = password;
     }
 

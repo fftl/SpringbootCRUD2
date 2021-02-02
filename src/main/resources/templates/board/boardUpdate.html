@@ -3,14 +3,26 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
-    <title>Update</title>
+    <title>디테일</title>
 </head>
 <body>
-<form action="#" th:action="@{/createBoard}" th:object="${boardDto}" method="post">
-  <div><label> title : <input type="text" th:field="${title}"/></label></div>
-  <div><label> nickname : <span th:text="${boardDto.nickname}"></span></label></div>
-  <div><label> content : <textarea th:field="${content}"/></label></div>
-  <button type="submit">작성완료</button>
+<div>게시글 조회입니다.</div>
+<form th:if="${session.user.userId == {getUserId} (getUserId=${boardDto.userId})}"
+      action="#" th:action="@{/Board}" th:object="${boardDto}" method="post">
+<!--<form th:if="${session.user.id == {getUserId} (getUserId=${boardDto.userId})}"-->
+    <div><label> title : <input type="text" th:field="${boardDto.title}"/></label></div>
+    <div><label> nickname : <span th:text="${boardDto.nickname}"></span></label></div>
+    <div><label> content : <textarea th:field="${boardDto.content}"/></label></div>
+    <button type="submit">작성완료</button>
+    <a href="/goBoard">취소</a>
+</form>
+
+<form th:if="${session.user.userId != {getUserId} (getUserId=${boardDto.userId})}"
+      action="#" th:action="@{/Board}" th:object="${boardDto}" method="post">
+    <div><label> title : <input type="text" th:field="${boardDto.title}" readonly="readonly"/></label></div>
+    <div><label> nickname : <span th:text="${boardDto.nickname}" readonly="readonly"></span></label></div>
+    <div><label> content : <textarea th:field="${boardDto.content}" readonly="readonly"/></label></div>
+    <a href="/goBoard">뒤로가기</a>
 </form>
 </body>
 </html>

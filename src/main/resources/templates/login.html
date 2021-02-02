@@ -5,7 +5,7 @@
 </head>
 <body>
 <form th:action="@{/login}" th:object="${LoginDto}" method="post">
-    <div><label> User Name : <input type="text" th:field="*{username}"/> </label></div>
+    <div><label> User Name : <input type="text" th:field="*{userName}"/> </label></div>
     <div><label> Password: <input type="password" th:field="*{password}"/> </label></div>
     <div><input type="submit" value="Sign In"/></div>
 </form>

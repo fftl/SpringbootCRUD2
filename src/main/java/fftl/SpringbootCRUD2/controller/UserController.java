@@ -46,7 +46,7 @@ public class UserController {
 
     @PostMapping("/login")
     public String userLogin(@ModelAttribute("LoginDto") UserLoginRequestDto loginDto, HttpServletRequest request){
-        User user = userService.userLogin(loginDto.getUsername(), loginDto.getPassword());
+        User user = userService.userLogin(loginDto.getUserName(), loginDto.getPassword());
         if(user.getEmail() != null){
             HttpSession session = request.getSession(true);
             session.setAttribute("user", user);

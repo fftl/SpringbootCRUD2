@@ -22,8 +22,8 @@ public class UserService {
 
     }
 
-    public User userLogin(String username, String password){
-        User user= userRepository.findByUsername(username).get();
+    public User userLogin(String userName, String password){
+        User user= userRepository.findByuserName(userName).get();
         System.out.println(password);
         System.out.println(user.getPassword());
         if(!user.getPassword().equals(password)){

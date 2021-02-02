@@ -9,9 +9,9 @@
 <div><b>회원가입</b>합니다!</div>
 <br>
 <form action="#" th:action="@{/join}" th:object="${userDto}" method="post">
-  <div><label> id : <input type="text" th:field="*{username}"/></label></div>
+  <div><label> id : <input type="text" th:field="*{userName}"/></label></div>
   <div><label> Password : <input type="password" th:field="*{password}"/></label></div>
-  <div><label> nickname : <input type="text" th:field="*{nickname}"/></label></div>
+  <div><label> nickname : <input type="text" th:field="*{nickName}"/></label></div>
   <div><label> email : <input type="email" th:field="*{email}"/></label></div>
   <button type="submit">가입완료</button>
 </form>

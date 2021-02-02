@@ -9,9 +9,10 @@
 <div><b>게시글을 작성</b>합니다!</div>
 <br>
 <form action="#" th:action="@{/createBoard}" th:object="${boardDto}" method="post">
-  <div><label> title : <input type="text" th:field="${title}"/></label></div>
-  <div><label> nickname : <span th:text="${boardDto.nickname}"></span></label></div>
-  <div><label> content : <textarea th:field="${content}"/></label></div>
+  <input type="hidden" th:value="${session.user.userId}" name="userId" id="userId">
+  <div><label> title : <input type="text" th:field="${boardDto.title}"/></label></div>
+  <div><label> nickname :<input th:value="${session.user.nickName}" name="nickName" id="nickName" readonly="readonly"></label></div>
+  <div><label> content : <textarea th:field="${boardDto.content}"/></label></div>
   <button type="submit">작성완료</button>
 </form>
 </body>
