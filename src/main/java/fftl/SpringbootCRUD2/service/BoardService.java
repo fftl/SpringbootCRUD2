@@ -25,6 +25,6 @@ public class BoardService {
     }
 
     public Board getBoard(Long boardId){
-        return boardRepository.findById(boardId).orElseThrow();
+        return boardRepository.findById(boardId).orElseThrow(NoClassDefFoundError::new);
     }
 }
