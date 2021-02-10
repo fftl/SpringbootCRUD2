@@ -16,7 +16,7 @@ public class BoardService {
     private final BoardRepository boardRepository;
 
     @Transactional
-    public void boardSave(BoardSaveRequestDto boardDto){
+    public void createBoard(BoardSaveRequestDto boardDto){
         boardRepository.save(boardDto.toEntity());
     }
 
@@ -26,5 +26,13 @@ public class BoardService {
 
     public Board getBoard(Long boardId){
         return boardRepository.findById(boardId).orElseThrow(NoClassDefFoundError::new);
+    }
+
+    @Transactional
+    public void updateBoard(BoardSaveRequestDto boardDto){
+        System.out.println(boardDto.getBoardId());
+        System.out.println(boardDto.getContent());
+        Board board = boardRepository.findById(boardDto.getBoardId()).get();
+        board.boardUpdate(boardDto);
     }
 }

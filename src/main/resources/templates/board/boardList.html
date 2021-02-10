@@ -14,8 +14,8 @@
             <th>date</th>
         </tr>
         <tr th:if="${boards != null}" th:each="board:${boards}">
-            <td th:text="${board.id}">id</td>
-            <td><a th:text="${board.title}" th:href="@{/goUpdate/{boardId} (boardId=${board.id})}">title</a></td>
+            <td th:text="${board.boardId}">id</td>
+            <td><a th:text="${board.title}" th:href="@{/goUpdate/{boardId} (boardId=${board.boardId})}">title</a></td>
             <td th:text="${board.regDate}"></td>
         </tr>
         <tr th:if="${boards.isEmpty()}">

@@ -1,5 +1,6 @@
 package fftl.SpringbootCRUD2.domain;
 
+import fftl.SpringbootCRUD2.dto.BoardSaveRequestDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,8 +16,8 @@ import java.time.LocalDateTime;
 public class Board {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long boardId;
 
     private Long userId;
 
@@ -33,5 +34,11 @@ public class Board {
         this.nickName = nickName;
         this.content = content;
         this.regDate = regDate;
+    }
+
+    public void boardUpdate(BoardSaveRequestDto boardDto){
+        this.title = boardDto.getTitle();
+        this.content = boardDto.getContent();
+        this.regDate = boardDto.getRegDate();
     }
 }

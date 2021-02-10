@@ -14,11 +14,28 @@ cache:
 
 script: "./gradlew clean build"
 
-before_install:
-  - chmod +x gradlew
-
 # CI 실행 완료 시 메일로 알림
 notifications:
   email:
     recipients:
       - 'fftl.0710@gmail.com'
+
+before_install:
+  - chmod +x gradlew
+
+before_deploy:
+  - zip -r SpringbootCRUD2 *
+  - mkdir -p deploy
+  - mv SpringbootCRUD2.zip deploy/SpringbootCRUD2.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY # Travis 에서 설정한 값
+    secret_access_key: $AWS_ACCESS_KEY # Travis 에서 설정한 값
+
+    bucket: fftl-s3 #S3 버켓 이름,
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private # zip 파일 접근을 private으로 바꿈
+    local_dir: deploy # before_deploy에서 생성한 디렉토리
+    wait-until-deployed: true

@@ -13,6 +13,7 @@ public class UserSaveRequsetDto {
 
         private String userName;
         private String password;
+        private String passwordConfirm;
         private String nickName;
         private String email;
 

@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class BoardSaveRequestDto {
 
+    private Long boardId;
     private Long userId;
     private String nickName;
     private String title;
@@ -21,7 +22,8 @@ public class BoardSaveRequestDto {
     private LocalDateTime regDate;
 
     @Builder
-    public BoardSaveRequestDto(Long userId, String nickName, String title, String content, LocalDateTime regDate) {
+    public BoardSaveRequestDto(Long boardId, Long userId, String nickName, String title, String content, LocalDateTime regDate) {
+        this.boardId = boardId;
         this.userId = userId;
         this.nickName = nickName;
         this.title = title;

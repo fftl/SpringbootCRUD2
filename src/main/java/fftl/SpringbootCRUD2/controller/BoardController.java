@@ -49,7 +49,7 @@ public class BoardController {
     @PostMapping("/createBoard")
     public String createBoard(@ModelAttribute("boardDto") BoardSaveRequestDto boardDto) {
         boardDto.setRegDate(today);
-        boardService.boardSave(boardDto);
+        boardService.createBoard(boardDto);
 
         return "redirect:/";
     }
@@ -60,5 +60,13 @@ public class BoardController {
         model.addAttribute("boardDto", boardService.getBoard(boardId));
 
         return "/board/boardUpdate";
+    }
+
+    @PostMapping("/updateBoard")
+    public String updateBoard(@ModelAttribute("boardDto") BoardSaveRequestDto boardDto) {
+        boardDto.setRegDate(today);
+        boardService.updateBoard(boardDto);
+
+        return "redirect:/goBoard";
     }
 }

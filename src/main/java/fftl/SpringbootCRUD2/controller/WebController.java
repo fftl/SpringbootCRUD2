@@ -12,11 +12,6 @@ public class WebController {
 
     @GetMapping("/")
     public String goIndex(HttpServletRequest req){
-//        HttpSession session = req.getSession(true);
-//        if(session != null){
-//            User userInfo = (User) session.getAttribute("userInfo");
-//            System.out.println(userInfo.getEmail());
-//        }
         return "home";
     }
 
