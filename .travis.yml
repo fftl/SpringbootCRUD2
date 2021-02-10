@@ -31,7 +31,7 @@ before_deploy:
 deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY # Travis 에서 설정한 값
-    secret_access_key: $AWS_ACCESS_KEY # Travis 에서 설정한 값
+    secret_access_key: $AWS_SECRET_KEY # Travis 에서 설정한 값
 
     bucket: fftl-s3 #S3 버켓 이름,
     region: ap-northeast-2
