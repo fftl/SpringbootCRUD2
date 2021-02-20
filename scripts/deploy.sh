@@ -1,4 +1,4 @@
-#!/bin/hash
+#!/bin/bash
 
 REPOSITORY=/home/ec2-user/app/sb_crud2_s3
 PROJECT_NAME=SpringbootCRUD2
