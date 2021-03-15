@@ -13,9 +13,8 @@
     </div>
     <!--로그인 했을 때는 아래가 보임, login session을 부여했음-->
     <div th:if="${session.user != null}">
-        <a href="/logout">로그아웃!!</a>
         <p><b>로그인 되었습니다!!</b></p>
-        <p><a href="/goBoard">게시판</a>들어가기</p>
+        <p><a href="/goBoard">게시판</a> 들어가기</p>
     </div>
     <div th:replace="fragments/footer :: footer"/>
 </div>

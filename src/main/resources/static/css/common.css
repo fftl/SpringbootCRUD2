@@ -12,9 +12,25 @@
     padding-top: 20px;
     padding-bottom: 20px;
     border-bottom: 1px solid #e5e5e5;
+
+    margin-bottom: 20px;
+}
+
+.header .header-title {
+    text-decoration : none;
+}
+
+.header .header-logout {
+    text-align : right;
+}
+
+.header .header-title h1{
+    display : inline;
 }
 
 .footer {
     padding-top: 20px;
     border-top: 1px solid #e5e5e5;
+
+    margin-top: 20px;
 }

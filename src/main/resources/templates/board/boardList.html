@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
 <head>
     <meta charset="UTF-8">
     <title>List</title>
 </head>
 <body>
-<h1>게시판 입니다.</h1>
-<div>
-    <table border="" class="table table-board">
-        <tr>
-            <th>No</th>
-            <th>title</th>
-            <th>date</th>
-        </tr>
-        <tr th:if="${boards != null}" th:each="board:${boards}">
-            <td th:text="${board.boardId}">id</td>
-            <td><a th:text="${board.title}" th:href="@{/goUpdate/{boardId} (boardId=${board.boardId})}">title</a></td>
-            <td th:text="${board.regDate}"></td>
-        </tr>
-        <tr th:if="${boards.isEmpty()}">
-            <td colspan="3">게시글이 존재하지 않습니다.</td>
-        </tr>
-    </table>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <h1>게시판 입니다.</h1>
+    <div>
+        <table border="" class="table table-board">
+            <tr>
+                <th>No</th>
+                <th>title</th>
+                <th>date</th>
+            </tr>
+            <tr th:if="${boards != null}" th:each="board:${boards}">
+                <td th:text="${board.boardId}">id</td>
+                <td><a th:text="${board.title}" th:href="@{/goUpdate/{boardId} (boardId=${board.boardId})}">title</a></td>
+                <td th:text="${board.regDate}"></td>
+            </tr>
+            <tr th:if="${boards.isEmpty()}">
+                <td colspan="3">게시글이 존재하지 않습니다.</td>
+            </tr>
+        </table>
+    </div>
+    <p><a href="/goBoardCreate">게시글 생성</a></p>
+    <div th:replace="fragments/footer :: footer"/>
 </div>
-<p><a href="/goBoardCreate">게시글 생성</a></p>
 </body>
 </html>

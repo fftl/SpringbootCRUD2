@@ -10,6 +10,7 @@
     <form th:action="@{/login}" th:object="${LoginDto}" method="post">
         <div><label> User Name : <input type="text" th:field="*{userName}"/> </label></div>
         <div><label> Password: <input type="password" th:field="*{password}"/> </label></div>
+        <br/>
         <div><button class="btn btn-primary" type="submit" value="Sign In">로그인</button></div>
     </form>
     <div th:replace="fragments/footer :: footer"/>

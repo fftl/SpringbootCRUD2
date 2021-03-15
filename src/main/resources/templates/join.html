@@ -7,7 +7,6 @@
 <body>
 <div class="container">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-    <br/>
     <div><b>회원가입</b>합니다!</div>
     <br>
     <form action="#" th:action="@{/join}" th:object="${userDto}" method="post">
@@ -24,6 +23,7 @@
         <div><label> 닉네임 : <input type="text" th:field="*{nickName}"/></label></div>
         <div><label> 이메일 : <input type="email" th:field="*{email}"/></label></div>
 
+        <br/>
         <button type="submit" class="btn btn-primary">가입완료</button>
     </form>
     <div th:replace="fragments/footer :: footer"/>
