@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
-<head>
-    <title>SpringbootCRUD2</title>
+<head th:replace="fragments/header :: header">
+    <meta charset="UTF-8">
+    <title>home</title>
 </head>
 <body>
-<form th:action="@{/login}" th:object="${LoginDto}" method="post">
-    <div><label> User Name : <input type="text" th:field="*{userName}"/> </label></div>
-    <div><label> Password: <input type="password" th:field="*{password}"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
-</form>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <form th:action="@{/login}" th:object="${LoginDto}" method="post">
+        <div><label> User Name : <input type="text" th:field="*{userName}"/> </label></div>
+        <div><label> Password: <input type="password" th:field="*{password}"/> </label></div>
+        <div><button class="btn btn-primary" type="submit" value="Sign In">로그인</button></div>
+    </form>
+    <div th:replace="fragments/footer :: footer"/>
+</div>
 </body>
 </html>

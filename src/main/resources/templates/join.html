@@ -1,30 +1,33 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
     <meta charset="UTF-8">
     <title>join</title>
 </head>
 <body>
-<div><b>회원가입</b>합니다!</div>
-<br>
-<form action="#" th:action="@{/join}" th:object="${userDto}" method="post">
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <br/>
+    <div><b>회원가입</b>합니다!</div>
+    <br>
+    <form action="#" th:action="@{/join}" th:object="${userDto}" method="post">
 
-    <div><label> 아이디 : <input type="text" th:field="*{userName}"/></label></div>
-    <div><label> 비밀번호 : <input id="password1" type="password" th:field="*{password}"
-                               th:onchange="passwordCk()"/></label></div>
-    <div><label> 비밀번호 확인 : <input id="password2" type="password" th:field="*{passwordConfirm}"
-                                  th:onchange="passwordCk()"/></label></div>
+        <div><label> 아이디 : <input type="text" th:field="*{userName}"/></label></div>
+        <div><label> 비밀번호 : <input id="password1" type="password" th:field="*{password}"
+                                   th:onchange="passwordCk()"/></label></div>
+        <div><label> 비밀번호 확인 : <input id="password2" type="password" th:field="*{passwordConfirm}"
+                                      th:onchange="passwordCk()"/></label>
+            <span id="alert-success" style="display: none; color: #0000FF; font-weight: bold; ">비밀번호가 일치합니다.</span>
+            <span id="alert-danger" style="display: none; color: #d92742; font-weight: bold; ">비밀번호가 일치하지 않습니다.</span>
+        </div>
 
-    <p id="alert-success" style="display: none;">비밀번호가 일치합니다.</p>
-    <p id="alert-danger" style="display: none; color: #d92742; font-weight: bold; ">비밀번호가 일치하지 않습니다.</p>
+        <div><label> 닉네임 : <input type="text" th:field="*{nickName}"/></label></div>
+        <div><label> 이메일 : <input type="email" th:field="*{email}"/></label></div>
 
-    <div><label> 닉네임 : <input type="text" th:field="*{nickName}"/></label></div>
-    <div><label> 이메일 : <input type="email" th:field="*{email}"/></label></div>
-
-    <button type="submit">가입완료</button>
-</form>
-
+        <button type="submit" class="btn btn-primary">가입완료</button>
+    </form>
+    <div th:replace="fragments/footer :: footer"/>
+</div>
 <script th:inline="javascript">
 
     function passwordCk(){

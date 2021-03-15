@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
-<head>
+<head th:replace="fragments/header :: header">
     <meta charset="UTF-8">
     <title>home</title>
 </head>
 <body>
-    <h1>안녕하세요! springbootCRUD2 입니다.</h1>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
     <div th:if="${session.user == null}">
         <p><a href="/inJoin">회원가입</a>하세요!</p>
         <p><a href="/inLogin">로그인</a>하세요!</p>
@@ -16,6 +17,7 @@
         <p><b>로그인 되었습니다!!</b></p>
         <p><a href="/goBoard">게시판</a>들어가기</p>
     </div>
-
+    <div th:replace="fragments/footer :: footer"/>
+</div>
 </body>
 </html>
