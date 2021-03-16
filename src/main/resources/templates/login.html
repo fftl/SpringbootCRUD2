@@ -8,8 +8,8 @@
 <div class="container">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
     <form th:action="@{/login}" th:object="${LoginDto}" method="post">
-        <div><label> User Name : <input type="text" th:field="*{userName}"/> </label></div>
-        <div><label> Password: <input type="password" th:field="*{password}"/> </label></div>
+        <div><label> 아이디 : <input type="text" th:field="*{userName}"/> </label></div>
+        <div><label> 비밀번호 : <input type="password" th:field="*{password}"/> </label></div>
         <br/>
         <div><button class="btn btn-primary" type="submit" value="Sign In">로그인</button></div>
     </form>
