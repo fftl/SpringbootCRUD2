@@ -9,14 +9,15 @@
 <body>
 <div class="container">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-    <div>게시글 조회입니다.</div>
+    <div><b>게시글 조회</b>입니다.</div>
+    <br/>
     <form action="#" th:action="@{/updateBoard}" th:object="${boardDto}" method="post">
         <input type="hidden" th:field="${boardDto.boardId}"/>
-        <div><label> 제목 : <input id="title" type="text" th:field="${boardDto.title}"/></label></div>
-        <div><label> 닉네임 : <span th:text="${boardDto.nickName}"></span></label></div>
-        <div><label> 내용 : <textarea input id="content" th:field="${boardDto.content}"/></label></div>
-        <button id="updateButton" style="display : none;" type="submit">작성완료</button>
-        <a href="/goBoard">취소</a>
+        <div style="display:inline;"><label> 제목 : <input class="form-control" id="title" type="text" th:field="${boardDto.title}"/></label></div>
+        <div style="display:inline;"><label> 닉네임 : <input class="form-control" th:field="${boardDto.nickName}" readonly="readonly"/></label></div>
+        <div><label> 내용 : <textarea class="form-control" input id="content" th:field="${boardDto.content}"  style="width:600px; height:100px;"/></label></div>
+        <button class="btn btn-primary" type="submit" id="updateButton" style="display : none;">작성완료</button>
+        <button class="btn btn-danger" type="button" onclick="location.href='/goBoardCreate'">취소</button>
     </form>
     <div th:replace="fragments/footer :: footer"/>
     </div>

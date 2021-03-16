@@ -34,3 +34,8 @@
 
     margin-top: 20px;
 }
+
+.warning {
+    color : #808080;
+    font-size: 6px;
+}

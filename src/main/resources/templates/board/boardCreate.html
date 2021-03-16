@@ -13,10 +13,11 @@
   <br>
   <form action="#" th:action="@{/createBoard}" th:object="${boardDto}" method="post">
     <input type="hidden" th:value="${session.user.userId}" name="userId" id="userId">
-    <div><label> 제목 : <input type="text" th:field="${boardDto.title}"/></label></div>
-    <div><label> 닉네임 : <input th:value="${session.user.nickName}" name="nickName" id="nickName" readonly="readonly"></label></div>
-    <div><label> 내용 : <textarea th:field="${boardDto.content}"/></label></div>
-    <button type="submit">작성완료</button>
+    <div style="display:inline;"><label> 제목 : <input class="form-control" type="text" th:field="${boardDto.title}"/></label></div>
+    <div style="display:inline;"><label> 닉네임 : <input class="form-control" th:value="${session.user.nickName}" name="nickName" id="nickName" readonly="readonly"></label></div>
+    <div><label> 내용 : <textarea class="form-control" th:field="${boardDto.content}" style="width:600px; height:100px;"/></label></div>
+    <button class="btn btn-primary" type="submit">작성완료</button>
+    <button class="btn btn-danger" type="button" onclick="location.href='/goBoard'">취소</button>
   </form>
   <div th:replace="fragments/footer :: footer"/>
 </div>

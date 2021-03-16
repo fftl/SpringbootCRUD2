@@ -8,7 +8,7 @@
 <body>
 <div class="container">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-    <h1>게시판 입니다.</h1>
+    <p><b>게시판 입니다.</b></p>
     <div>
         <table border="" class="table table-board">
             <tr>
@@ -26,7 +26,7 @@
             </tr>
         </table>
     </div>
-    <p><a href="/goBoardCreate">게시글 생성</a></p>
+    <button class="btn btn-primary" onclick="location.href='/goBoardCreate'">게시글 생성</button>
     <div th:replace="fragments/footer :: footer"/>
 </div>
 </body>

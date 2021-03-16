@@ -22,7 +22,7 @@ import java.util.List;
 public class BoardController {
 
     private final BoardService boardService;
-    LocalDateTime today = LocalDateTime.now();
+
 
     @GetMapping("/goBoard")
     public String goBoard(Model model) {
@@ -48,6 +48,7 @@ public class BoardController {
 
     @PostMapping("/createBoard")
     public String createBoard(@ModelAttribute("boardDto") BoardSaveRequestDto boardDto) {
+        LocalDateTime today = LocalDateTime.now();
         boardDto.setRegDate(today);
         boardService.createBoard(boardDto);
 
@@ -64,6 +65,7 @@ public class BoardController {
 
     @PostMapping("/updateBoard")
     public String updateBoard(@ModelAttribute("boardDto") BoardSaveRequestDto boardDto) {
+        LocalDateTime today = LocalDateTime.now();
         boardDto.setRegDate(today);
         boardService.updateBoard(boardDto);
 
