@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <title>join</title>
 </head>
+<style>
+    #checkId{
+        margin-right:5px;
+    }
+</style>
 <body>
 <div class="container">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
@@ -11,7 +16,7 @@
     <br>
     <form action="#" th:action="@{/join}" th:object="${userDto}" method="post">
 
-        <div><label> 아이디 : <input type="text" th:field="*{userName}"/></label></div>
+        <div><label> 아이디 : <input id="checkId" type="text" th:field="*{userName}"/></label><button id="id-check" type="button" class="btn btn-primary"  onclick="idCheck()">중복확인</button></div>
         <div><label> 비밀번호 : <input id="password1" type="password" th:field="*{password}"
                                    th:onchange="passwordCk()"/></label></div>
         <div><label> 비밀번호 확인 : <input id="password2" type="password" th:field="*{passwordConfirm}"
@@ -46,6 +51,31 @@
         fail.style.display = "none";
       }
 
+    }
+
+    function idCheck(){
+        var idDocu = document.getElementById("checkId");
+        var checkId = document.getElementById("checkId").value;
+
+        $.ajax({
+            url: "http://127.0.0.1:8080/idCheck/"+checkId,
+            type: "GET",
+            success: function(data){
+
+                if(data.data == "y"){
+                    var conf = confirm("사용 가능한 아이디 입니다. 사용하시겠습니까?");
+                    if(conf){
+                        idDocu.setAttribute("readonly", "readonly");
+                    }
+                } else {
+                    alert("사용할 수 없는 아이디 입니다.");
+                }
+            },
+            error: function(error){
+                console.log("idcheck()에서 에러 발생!!");
+                console.log(error);
+            }
+        });
     }
 </script>
 </body>

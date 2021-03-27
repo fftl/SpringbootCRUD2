@@ -23,15 +23,29 @@ public class UserService {
     }
 
     public User userLogin(String userName, String password){
-        User user= userRepository.findByuserName(userName).get();
-        System.out.println(password);
-        System.out.println(user.getPassword());
-        if(!user.getPassword().equals(password)){
-            System.out.println("틀렸대");
+        User user= userRepository.findByUserName(userName);
+
+        if(user == null){
             User NotFoundUser = new User();
             return NotFoundUser;
         }
-        System.out.println("맞았대");
+
+        if(!user.getPassword().equals(password)){
+            User NotFoundUser = new User();
+            return NotFoundUser;
+        }
+
         return user;
+    }
+
+    public boolean idCheck(String idCheck){
+
+        User user = userRepository.findByUserName(idCheck);
+
+        if(user == null){
+            return true;
+        }
+
+        return false;
     }
 }

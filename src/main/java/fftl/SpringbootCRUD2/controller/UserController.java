@@ -1,5 +1,6 @@
 package fftl.SpringbootCRUD2.controller;
 
+import fftl.SpringbootCRUD2.dto.ResponseDto;
 import fftl.SpringbootCRUD2.dto.UserLoginRequestDto;
 import fftl.SpringbootCRUD2.dto.UserSaveRequsetDto;
 import fftl.SpringbootCRUD2.domain.User;
@@ -29,12 +30,6 @@ public class UserController {
 
     @PostMapping("/join")
     public String userSave(@ModelAttribute("userDto") UserSaveRequsetDto userDto) {
-        System.out.println(userDto.getEmail());
-        System.out.println("Test");
-        //작업필요
-        if (!userDto.getPassword().equals(userDto.getPasswordConfirm())) {
-
-        }
         userService.userSave(userDto);
         return "redirect:/";
     }
@@ -66,5 +61,21 @@ public class UserController {
         session.invalidate();
 
         return "redirect:/";
+    }
+
+    @ResponseBody
+    @GetMapping("/idCheck/{idCheck}")
+    public ResponseDto userLogout(@PathVariable String idCheck) {
+        if (userService.idCheck(idCheck)){
+            return ResponseDto.builder()
+                    .data("y")
+                    .content("사용할 수 있는 아이디!")
+                    .build();
+        }
+
+        return ResponseDto.builder()
+                    .data("n")
+                    .content("중복된 아이디 입니다!")
+                    .build();
     }
 }
