@@ -6,15 +6,15 @@ import fftl.SpringbootCRUD2.dto.UserSaveRequsetDto;
 import fftl.SpringbootCRUD2.domain.User;
 import fftl.SpringbootCRUD2.service.UserService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
-@Slf4j
+
 @RequiredArgsConstructor
 @Controller
 public class UserController {
@@ -29,7 +29,7 @@ public class UserController {
     }
 
     @PostMapping("/join")
-    public String userSave(@ModelAttribute("userDto") UserSaveRequsetDto userDto) {
+    public String userSave(@ModelAttribute("userDto") @Valid UserSaveRequsetDto userDto) {
         userService.userSave(userDto);
         return "redirect:/";
     }

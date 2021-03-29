@@ -9,7 +9,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Setter
 @Getter
 @Entity
 @NoArgsConstructor
@@ -20,7 +19,6 @@ public class Board {
     private Long boardId;
 
     private Long userId;
-
     private String title;
     private String nickName;
     private String content;
