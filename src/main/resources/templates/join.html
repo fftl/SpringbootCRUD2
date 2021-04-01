@@ -58,7 +58,8 @@
         var checkId = document.getElementById("checkId").value;
 
         $.ajax({
-            url: "http://ec2-13-125-95-178.ap-northeast-2.compute.amazonaws.com:8080/idCheck/"+checkId,
+<!--            url: "http://ec2-13-125-95-178.ap-northeast-2.compute.amazonaws.com:8080/idCheck/"+checkId,-->
+            url: "http://127.0.0.1:8080/idCheck/"+checkId,
             type: "GET",
             success: function(data){
 

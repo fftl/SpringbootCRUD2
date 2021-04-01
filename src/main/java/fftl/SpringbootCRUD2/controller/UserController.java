@@ -8,6 +8,7 @@ import fftl.SpringbootCRUD2.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +30,7 @@ public class UserController {
     }
 
     @PostMapping("/join")
-    public String userSave(@ModelAttribute("userDto") @Valid UserSaveRequsetDto userDto) {
+    public String userSave(@ModelAttribute("userDto") @Valid UserSaveRequsetDto userDto, BindingResult result) {
         userService.userSave(userDto);
         return "redirect:/";
     }
@@ -69,7 +70,7 @@ public class UserController {
         if (userService.idCheck(idCheck)){
             return ResponseDto.builder()
                     .data("y")
-                    .content("사용할 수 있는 아이디!")
+                    .content("사용할 수 있는 아이디입니다!")
                     .build();
         }
 
