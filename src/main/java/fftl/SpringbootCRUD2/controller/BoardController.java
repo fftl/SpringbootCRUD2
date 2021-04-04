@@ -30,7 +30,7 @@ public class BoardController {
 
         model.addAttribute("boards", boards);
 
-        return "/board/boardList";
+        return "board/boardList";
     }
 
     @GetMapping("/goBoardCreate")
@@ -43,7 +43,7 @@ public class BoardController {
 
         model.addAttribute("boardDto", boardSaveRequestDto);
 
-        return "/board/boardCreate";
+        return "board/boardCreate";
     }
 
     @PostMapping("/createBoard")
@@ -60,7 +60,7 @@ public class BoardController {
 
         model.addAttribute("boardDto", boardService.getBoard(boardId));
 
-        return "/board/boardUpdate";
+        return "board/boardUpdate";
     }
 
     @PostMapping("/updateBoard")
